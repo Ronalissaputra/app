@@ -7,8 +7,11 @@ import {
   ArticleScreen,
   AddScreen,
 } from '../screens';
+import {useGettokendecoded} from '../features/authintence';
+import {useEffect} from 'react';
 const Tab = createBottomTabNavigator();
 const Tabnavigation = () => {
+  const {data} = useGettokendecoded();
   return (
     <Tab.Navigator
       barStyle="light-content"
@@ -44,26 +47,39 @@ const Tabnavigation = () => {
           return <Icon name={iconName} size={size} color={color} />;
         },
       })}>
-      <Tab.Screen
-        options={{title: 'Beranda'}}
-        name="HomeScreen"
-        component={HomeScreen}
-      />
-      <Tab.Screen
-        options={{title: 'Pemantauan'}}
-        name="MonitoringScreen"
-        component={MonitoringScreen}
-      />
-      <Tab.Screen
-        options={{title: 'Edukasi'}}
-        name="ArticleScreen"
-        component={ArticleScreen}
-      />
-      <Tab.Screen
-        options={{title: 'Tambah'}}
-        name="AddScreen"
-        component={AddScreen}
-      />
+      {data && data.decoded.userrole === 'admin' && (
+        <>
+          <Tab.Screen
+            options={{title: 'Beranda'}}
+            name="HomeScreen"
+            component={HomeScreen}
+          />
+          <Tab.Screen
+            options={{title: 'Pemantauan'}}
+            name="MonitoringScreen"
+            component={MonitoringScreen}
+          />
+          <Tab.Screen
+            options={{title: 'Tambah'}}
+            name="AddScreen"
+            component={AddScreen}
+          />
+        </>
+      )}
+      {data && data.decoded.userrole === 'pasien' && (
+        <>
+          <Tab.Screen
+            options={{title: 'Beranda'}}
+            name="HomeScreen"
+            component={HomeScreen}
+          />
+          <Tab.Screen
+            options={{title: 'Edukasi'}}
+            name="ArticleScreen"
+            component={ArticleScreen}
+          />
+        </>
+      )}
     </Tab.Navigator>
   );
 };

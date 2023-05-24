@@ -12,7 +12,6 @@ import {Formik} from 'formik';
 import {Dropdown} from 'react-native-element-dropdown';
 import LinearGradient from 'react-native-linear-gradient';
 import {LabelComp, SpinloadComp} from '../utils';
-import {useCreatemasanifas} from '../../features/masanifas';
 import {useNavigation} from '@react-navigation/native';
 
 const NifasForm = ({route}) => {

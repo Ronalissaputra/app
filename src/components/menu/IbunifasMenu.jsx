@@ -7,24 +7,23 @@ import {
   Image,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {useGetmasanifas} from '../../features/masanifas';
 import {LabelComp, SpinloadComp} from '../utils';
 
 const IbunifasMenu = () => {
-  const {data, isLoading} = useGetmasanifas();
-  const uniqueData = {};
+  // const {data, isLoading} = useGetmasanifas();
+  // const uniqueData = {};
 
-  data &&
-    data.forEach(item => {
-      if (!uniqueData[item.tbUserId]) {
-        uniqueData[item.tbUserId] = item;
-      }
-    });
-  const uniqueDataArray = Object.values(uniqueData);
+  // data &&
+  //   data.forEach(item => {
+  //     if (!uniqueData[item.tbUserId]) {
+  //       uniqueData[item.tbUserId] = item;
+  //     }
+  //   });
+  // const uniqueDataArray = Object.values(uniqueData);
 
   return (
     <SafeAreaView className="h-auto">
-      {isLoading && <SpinloadComp />}
+      {/* {isLoading && <SpinloadComp />}
       {uniqueDataArray.length > 0 ? (
         <>
           <ScrollView stickyHeaderIndices={[0]}>
@@ -61,7 +60,7 @@ const IbunifasMenu = () => {
             <Text className="text-2xl text-[#F64F59]">Belum ada data!</Text>
           </View>
         </>
-      )}
+      )} */}
     </SafeAreaView>
   );
 };

@@ -15,9 +15,8 @@ import {SpinloadComp} from '../components/utils';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
-  const {data, mutate, isLoading, isSuccess, isError} = useLogin();
-  console.log(isError);
-  console.log(data && data.msg);
+  const {mutate, isLoading, isSuccess} = useLogin();
+  console.log(isSuccess);
 
   return (
     <SafeAreaView>

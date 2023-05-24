@@ -1,12 +1,11 @@
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Formik} from 'formik';
-import * as yup from 'yup';
 import {validationRegister} from '../../lib/validationScema';
 
 const RegisterForm = ({mutate}) => {
   const initialValues = {
-    nama: '',
+    name: '',
     email: '',
     password: '',
     confPassword: '',
@@ -14,6 +13,7 @@ const RegisterForm = ({mutate}) => {
   };
   const onSubmit = async values => {
     await mutate(values);
+    // console.log(values);
   };
 
   return (
@@ -32,14 +32,14 @@ const RegisterForm = ({mutate}) => {
         }) => (
           <View className="space-y-2">
             <TextInput
-              onChangeText={handleChange('nama')}
-              onBlur={handleBlur('nama')}
-              value={values.nama}
+              onChangeText={handleChange('name')}
+              onBlur={handleBlur('name')}
+              value={values.name}
               placeholder="Username"
               className="w-full rounded-full p-2 py-3 px-4 bg-slate-200 text-slate-800 text-2xl"
             />
-            {touched.nama && errors.nama && (
-              <Text className="text-red-500 ml-5">{errors.nama}</Text>
+            {touched.name && errors.name && (
+              <Text className="text-red-500 ml-5">{errors.name}</Text>
             )}
             <TextInput
               onChangeText={handleChange('email')}

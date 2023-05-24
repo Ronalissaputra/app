@@ -6,20 +6,19 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+import {useState} from 'react';
 import {Formik} from 'formik';
 import LinearGradient from 'react-native-linear-gradient';
 import {LabelComp, SpinloadComp} from '../utils';
-import {useCreateuser} from '../../features/userintence';
 import {useNavigation} from '@react-navigation/native';
-import {useState} from 'react';
+import {useCreateibuhamil} from '../../features/ibuhamilintence';
 
 const IbuhamilForm = () => {
   const navigation = useNavigation();
-  const {mutate, isSuccess, isLoading} = useCreateuser();
+  const {mutate, isLoading} = useCreateibuhamil();
 
   const initialValues = {
-    nama_ibu: '',
-    nik: '',
+    name: '',
     umur: '',
     lama_nikah: '',
     suku: '',
@@ -27,10 +26,10 @@ const IbuhamilForm = () => {
     pendidikan: '',
     pekerjaan: '',
     alamat: '',
-    no_hp: '',
-    gol_darah: '',
-    no_bpjs: '',
-    tempat_periksa: '',
+    nomor_telefon: '',
+    golongan_darah: '',
+    nomor_bpjs: '',
+    tempat_pemeriksaan: '',
     nama_suami: '',
     umur_suami: '',
     agama_suami: '',
@@ -38,20 +37,21 @@ const IbuhamilForm = () => {
     pendidikan_suami: '',
     pekerjaan_suami: '',
     alamat_suami: '',
-    no_hpsuami: '',
+    nomortelefon_suami: '',
+    email: '',
     password: '',
-    confPassword: '',
-    role: 'user',
+    role: 'pasien',
   };
 
   const onSubmit = async (values, {resetForm}) => {
     await mutate(values);
-    resetForm({values: initialValues});
+    // resetForm({values: initialValues});
+    console.log(values);
   };
 
   return (
     <SafeAreaView className="h-auto">
-      {isSuccess && navigation.navigate('IbuhamilMenu')}
+      {/* {isSuccess && navigation.navigate('IbuhamilMenu')} */}
       {isLoading && <SpinloadComp />}
       <ScrollView stickyHeaderIndices={[0]}>
         <LabelComp>TAMBAH IBU HAMIL</LabelComp>
@@ -62,20 +62,10 @@ const IbuhamilForm = () => {
                 <View>
                   <Text className="text-xl mb-1">Nama</Text>
                   <TextInput
-                    onChangeText={handleChange('nama_ibu')}
-                    onBlur={handleBlur('nama_ibu')}
-                    value={values.nama_ibu}
-                    placeholder="nama"
-                    className="w-full rounded-sm p-2 py-3 px-4 bg-slate-300 text-slate-800 text-2xl"
-                  />
-                </View>
-                <View>
-                  <Text className="text-xl mb-1">Nik</Text>
-                  <TextInput
-                    onChangeText={handleChange('nik')}
-                    onBlur={handleBlur('nik')}
-                    value={values.nik}
-                    placeholder="nik"
+                    onChangeText={handleChange('name')}
+                    onBlur={handleBlur('name')}
+                    value={values.name}
+                    placeholder="name"
                     className="w-full rounded-sm p-2 py-3 px-4 bg-slate-300 text-slate-800 text-2xl"
                   />
                 </View>
@@ -152,9 +142,9 @@ const IbuhamilForm = () => {
                 <View>
                   <Text className="text-xl mb-1">Nomor handphone</Text>
                   <TextInput
-                    onChangeText={handleChange('no_hp')}
-                    onBlur={handleBlur('no_hp')}
-                    value={values.no_hp}
+                    onChangeText={handleChange('nomor_telefon')}
+                    onBlur={handleBlur('nomor_telefon')}
+                    value={values.nomor_telefon}
                     placeholder="nomor handphone"
                     className="w-full rounded-sm p-2 py-3 px-4 bg-slate-300 text-slate-800 text-2xl"
                   />
@@ -162,9 +152,9 @@ const IbuhamilForm = () => {
                 <View>
                   <Text className="text-xl mb-1">Golongan darah</Text>
                   <TextInput
-                    onChangeText={handleChange('gol_darah')}
-                    onBlur={handleBlur('gol_darah')}
-                    value={values.gol_darah}
+                    onChangeText={handleChange('golongan_darah')}
+                    onBlur={handleBlur('golongan_darah')}
+                    value={values.golongan_darah}
                     placeholder="golongan darah"
                     className="w-full rounded-sm p-2 py-3 px-4 bg-slate-300 text-slate-800 text-2xl"
                   />
@@ -172,9 +162,9 @@ const IbuhamilForm = () => {
                 <View>
                   <Text className="text-xl mb-1">Nomor bpjs</Text>
                   <TextInput
-                    onChangeText={handleChange('no_bpjs')}
-                    onBlur={handleBlur('no_bpjs')}
-                    value={values.no_bpjs}
+                    onChangeText={handleChange('nomor_bpjs')}
+                    onBlur={handleBlur('nomor_bpjs')}
+                    value={values.nomor_bpjs}
                     placeholder="nomor bpjs"
                     className="w-full rounded-sm p-2 py-3 px-4 bg-slate-300 text-slate-800 text-2xl"
                   />
@@ -182,9 +172,9 @@ const IbuhamilForm = () => {
                 <View>
                   <Text className="text-xl mb-1">Tempat periksa</Text>
                   <TextInput
-                    onChangeText={handleChange('tempat_periksa')}
-                    onBlur={handleBlur('tempat_periksa')}
-                    value={values.tempat_periksa}
+                    onChangeText={handleChange('tempat_pemeriksaan')}
+                    onBlur={handleBlur('tempat_pemeriksaan')}
+                    value={values.tempat_pemeriksaan}
                     placeholder="tempat periksa"
                     className="w-full rounded-sm p-2 py-3 px-4 bg-slate-300 text-slate-800 text-2xl"
                   />
@@ -262,30 +252,30 @@ const IbuhamilForm = () => {
                 <View>
                   <Text className="text-xl mb-1">Nomor Hp suami</Text>
                   <TextInput
-                    onChangeText={handleChange('no_hpsuami')}
-                    onBlur={handleBlur('no_hpsuami')}
-                    value={values.no_hpsuami}
+                    onChangeText={handleChange('nomortelefon_suami')}
+                    onBlur={handleBlur('nomortelefon_suami')}
+                    value={values.nomortelefon_suami}
                     placeholder="nomor hp suami"
                     className="w-full rounded-sm p-2 py-3 px-4 bg-slate-300 text-slate-800 text-2xl"
                   />
                 </View>
                 <View>
-                  <Text className="text-xl mb-1">Password user</Text>
+                  <Text className="text-xl mb-1">email</Text>
                   <TextInput
-                    onChangeText={handleChange('password')}
-                    onBlur={handleBlur('password')}
-                    value={values.password}
-                    placeholder="password user"
+                    onChangeText={handleChange('email')}
+                    onBlur={handleBlur('email')}
+                    value={values.email}
+                    placeholder="example@gmail.com"
                     className="w-full rounded-sm p-2 py-3 px-4 bg-slate-300 text-slate-800 text-2xl"
                   />
                 </View>
                 <View>
-                  <Text className="text-xl mb-1">confPassword user</Text>
+                  <Text className="text-xl mb-1">Password</Text>
                   <TextInput
-                    onChangeText={handleChange('confPassword')}
-                    onBlur={handleBlur('confPassword')}
-                    value={values.confPassword}
-                    placeholder="confPassword user"
+                    onChangeText={handleChange('password')}
+                    onBlur={handleBlur('password')}
+                    value={values.password}
+                    placeholder="password"
                     className="w-full rounded-sm p-2 py-3 px-4 bg-slate-300 text-slate-800 text-2xl"
                   />
                 </View>

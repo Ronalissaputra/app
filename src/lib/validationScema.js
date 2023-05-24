@@ -15,7 +15,7 @@ export const validationLogin = yup.object().shape({
 });
 
 export const validationRegister = yup.object().shape({
-  nama: yup.string().required('Username tidak boleh kosong').min(3).max(20),
+  name: yup.string().required('Username tidak boleh kosong').min(3).max(20),
   email: yup
     .string()
     .email('Email tidak valid')

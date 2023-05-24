@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import {useEffect, useState} from 'react';
 import {axiosIsntance} from '../../lib/baseUrl';
-import {useCreatebayi} from '../../features/bayiintance';
 import {Formik} from 'formik';
 import {Dropdown} from 'react-native-element-dropdown';
 import LinearGradient from 'react-native-linear-gradient';
@@ -82,28 +81,6 @@ const BayilahirForm = () => {
     analisis_masalah: '',
     penatalaksanaan: '',
   };
-
-  const useGetuser = async () => {
-    try {
-      const response = await axiosIsntance.get('/user');
-      const count = Object.keys(response.data).length;
-      let users = [];
-      for (let i = 0; i < count; i++) {
-        users.push({
-          label: response.data[i].nama_ibu,
-          value: response.data[i].id,
-        });
-      }
-
-      setUsers(users);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    useGetuser();
-  }, []);
 
   const onSubmit = async (values, {resetForm}) => {
     values.tbUserId = value;

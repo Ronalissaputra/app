@@ -5,7 +5,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon3 from 'react-native-vector-icons/Entypo';
@@ -18,17 +18,13 @@ import {
   NifasModal,
   PersalinanModal,
 } from '../components/modals';
-import {useGetusermutate} from '../features/userintence';
 
 const MonitoringScreen = () => {
   const [km, setKm] = useState(false);
   const [nf, setNf] = useState(false);
   const [ps, setPs] = useState(false);
   const [by, setBy] = useState(false);
-  const {mutate} = useGetusermutate();
-  useEffect(() => {
-    mutate();
-  }, []);
+
   return (
     <SafeAreaView
       className={`${

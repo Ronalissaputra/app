@@ -100,10 +100,6 @@ const HomeScreen = () => {
             </TouchableOpacity>
           </LinearGradient>
         </View>
-        <View className="mt-5">
-          <TitleComp>edukasi kesehatan</TitleComp>
-          <ArtikelComp />
-        </View>
       </ScrollView>
     </SafeAreaView>
   );

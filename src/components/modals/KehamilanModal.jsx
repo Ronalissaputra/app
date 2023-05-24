@@ -8,15 +8,10 @@ import {
 } from 'react-native';
 import {useEffect} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useGetusermutate} from '../../features/userintence';
 import {useNavigation} from '@react-navigation/native';
 
 const KehamilanModal = ({km, setKm}) => {
   const navigation = useNavigation();
-  const {mutate, data: kunjungan} = useGetusermutate();
-  useEffect(() => {
-    mutate();
-  }, []);
   return (
     <View className="flex justify-end">
       <Modal animationType="slide" transparent={true} visible={km}>

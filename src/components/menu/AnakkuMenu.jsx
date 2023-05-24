@@ -7,24 +7,23 @@ import {
   Image,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {useGetbayi} from '../../features/bayiintance';
 import {LabelComp, SpinloadComp} from '../utils';
 
 const AnakkuMenu = () => {
-  const {data, isLoading} = useGetbayi();
+  // const {data, isLoading} = useGetbayi();
 
-  const uniqueData = {};
-  data &&
-    data.forEach(item => {
-      if (!uniqueData[item.id]) {
-        uniqueData[item.id] = item;
-      }
-    });
-  const uniqueDataArray = Object.values(uniqueData);
+  // const uniqueData = {};
+  // data &&
+  //   data.forEach(item => {
+  //     if (!uniqueData[item.id]) {
+  //       uniqueData[item.id] = item;
+  //     }
+  //   });
+  // const uniqueDataArray = Object.values(uniqueData);
 
   return (
     <SafeAreaView className="h-auto">
-      {isLoading && <SpinloadComp />}
+      {/* {isLoading && <SpinloadComp />}
       {uniqueDataArray.length > 0 ? (
         <>
           <ScrollView stickyHeaderIndices={[0]}>
@@ -68,7 +67,7 @@ const AnakkuMenu = () => {
             <Text className="text-2xl text-[#F64F59]">Belum ada data!</Text>
           </View>
         </>
-      )}
+      )} */}
     </SafeAreaView>
   );
 };

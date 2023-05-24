@@ -7,19 +7,18 @@ import {
   Image,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {useGetuser} from '../../features/userintence';
 import {LabelComp, SpinloadComp} from '../utils';
 
 const IbuhamilMenu = () => {
-  const {data, isLoading} = useGetuser();
-  const uniqueData = {};
-  data &&
-    data.forEach(item => {
-      if (!uniqueData[item.id]) {
-        uniqueData[item.id] = item;
-      }
-    });
-  const uniqueDataArray = Object.values(uniqueData);
+  // const {data, isLoading} = useGetuser();
+  // const uniqueData = {};
+  // data &&
+  //   data.forEach(item => {
+  //     if (!uniqueData[item.id]) {
+  //       uniqueData[item.id] = item;
+  //     }
+  //   });
+  // const uniqueDataArray = Object.values(uniqueData);
 
   return (
     <SafeAreaView className="h-auto">
@@ -28,7 +27,7 @@ const IbuhamilMenu = () => {
         <>
           <ScrollView stickyHeaderIndices={[0]}>
             <LabelComp>IBU HAMIL</LabelComp>
-            <View className="mx-2 mt-2">
+            {/* <View className="mx-2 mt-2">
               {uniqueDataArray.reverse().map(data => (
                 <View key={data.uuid}>
                   <LinearGradient
@@ -45,7 +44,7 @@ const IbuhamilMenu = () => {
                   </LinearGradient>
                 </View>
               ))}
-            </View>
+            </View> */}
           </ScrollView>
         </>
       ) : (

@@ -9,14 +9,9 @@ import {
 import {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useGetusermutate} from '../../features/userintence';
 
 const PersalinanModal = ({ps, setPs}) => {
   const navigation = useNavigation();
-  const {mutate, data: kunjungan} = useGetusermutate();
-  useEffect(() => {
-    mutate();
-  }, []);
   return (
     <View className="flex justify-end">
       <Modal animationType="slide" transparent={true} visible={ps}>

@@ -6,11 +6,12 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
-import {useEffect} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import {useGetibuhamil} from '../../features/ibuhamilintence';
 
 const KehamilanModal = ({km, setKm}) => {
+  const {data: kunjungan} = useGetibuhamil();
   const navigation = useNavigation();
   return (
     <View className="flex justify-end">
@@ -34,27 +35,26 @@ const KehamilanModal = ({km, setKm}) => {
               </View>
               {kunjungan && kunjungan.length > 0 ? (
                 <>
-                  {kunjungan &&
-                    kunjungan.map(kunjung => (
-                      <View key={kunjung.id} className="mb-2 flex items-center">
-                        <TouchableOpacity
-                          onPress={() =>
-                            navigation.navigate('KehamilanForm', {
-                              id: `${kunjung.id}`,
-                              nama_ibu: `${kunjung.nama_ibu}`,
-                              setKm: setKm,
-                            })
-                          }
-                          className="w-full rounded-lg">
-                          <View className="flex-row space-x-3">
-                            <Text className="text-2xl text-gray-800">
-                              {kunjung.nama_ibu}
-                            </Text>
-                          </View>
-                        </TouchableOpacity>
-                        <View className="border w-full border-slate-200 my-2" />
-                      </View>
-                    ))}
+                  {kunjungan.map(kunjung => (
+                    <View key={kunjung.id} className="mb-2 flex items-center">
+                      <TouchableOpacity
+                        onPress={() =>
+                          navigation.navigate('KehamilanForm', {
+                            id: `${kunjung.id}`,
+                            name: `${kunjung.name}`,
+                            setKm: setKm,
+                          })
+                        }
+                        className="w-full rounded-lg">
+                        <View className="flex-row space-x-3">
+                          <Text className="text-2xl text-gray-800">
+                            {kunjung.name}
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                      <View className="border w-full border-slate-200 my-2" />
+                    </View>
+                  ))}
                 </>
               ) : (
                 <>

@@ -6,11 +6,12 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
-import {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useGetibuhamil} from '../../features/ibuhamilintence';
 
 const PersalinanModal = ({ps, setPs}) => {
+  const {data: kunjungan} = useGetibuhamil();
   const navigation = useNavigation();
   return (
     <View className="flex justify-end">
@@ -41,14 +42,14 @@ const PersalinanModal = ({ps, setPs}) => {
                           onPress={() =>
                             navigation.navigate('PersalinanForm', {
                               uuid: `${kunjung.uuid}`,
-                              nama_ibu: `${kunjung.nama_ibu}`,
+                              name: `${kunjung.name}`,
                               setPs: setPs,
                             })
                           }
                           className="w-full rounded-lg">
                           <View className="flex-row space-x-3">
                             <Text className="text-2xl text-gray-800">
-                              {kunjung.nama_ibu}
+                              {kunjung.name}
                             </Text>
                           </View>
                         </TouchableOpacity>

@@ -1,12 +1,12 @@
 import {useMutation, useQuery} from 'react-query';
-import {axiosIsntance} from '../lib/baseUrl';
-import jwtDecode from 'jwt-decode';
+import {axiosInstance} from '../lib/baseUrl';
+import jwt_decode from 'jwt-decode';
 
 export const useGettokendecoded = () => {
-  return useQuery('data', async () => {
-    const response = await axiosIsntance.get('/refreshtoken');
-    const accesstoken = response.data.accesstoken;
-    const decoded = jwtDecode(response.data.accesstoken);
+  return useQuery('token', async () => {
+    const response = await axiosInstance.get('/refreshtoken');
+    const {accesstoken} = response.data;
+    const decoded = jwt_decode(accesstoken);
     return {decoded, accesstoken};
   });
 };
@@ -14,7 +14,7 @@ export const useGettokendecoded = () => {
 export const useLogin = () => {
   try {
     return useMutation(async data => {
-      const response = await axiosIsntance.post('/login', data);
+      const response = await axiosInstance.post('/login', data);
       return response.data;
     });
   } catch (error) {
@@ -24,7 +24,7 @@ export const useLogin = () => {
 
 export const useLogout = () => {
   try {
-    return useMutation(() => axiosIsntance.delete('/logout'));
+    return useMutation(() => axiosInstance.delete('/logout'));
   } catch (error) {
     console.log(error);
   }

@@ -8,26 +8,29 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {LabelComp, SpinloadComp} from '../utils';
+import {useGetibuhamil} from '../../features/ibuhamilintence';
 
 const IbuhamilMenu = () => {
-  // const {data, isLoading} = useGetuser();
-  // const uniqueData = {};
-  // data &&
-  //   data.forEach(item => {
-  //     if (!uniqueData[item.id]) {
-  //       uniqueData[item.id] = item;
-  //     }
-  //   });
-  // const uniqueDataArray = Object.values(uniqueData);
+  const {data, isLoading} = useGetibuhamil();
+  const uniqueData = {};
+
+  if (data && data.length > 1) {
+    data.forEach(item => {
+      if (!uniqueData[item.id]) {
+        uniqueData[item.id] = item;
+      }
+    });
+  }
+  const uniqueDataArray = Object.values(uniqueData);
 
   return (
     <SafeAreaView className="h-auto">
       {isLoading && <SpinloadComp />}
-      {uniqueDataArray.length > 0 ? (
+      {uniqueDataArray.length > 1 ? (
         <>
           <ScrollView stickyHeaderIndices={[0]}>
             <LabelComp>IBU HAMIL</LabelComp>
-            {/* <View className="mx-2 mt-2">
+            <View className="mx-2 mt-2">
               {uniqueDataArray.reverse().map(data => (
                 <View key={data.uuid}>
                   <LinearGradient
@@ -37,14 +40,14 @@ const IbuhamilMenu = () => {
                     className="w-full h-20 rounded-md mb-3">
                     <TouchableOpacity className="p-2 flex-row items-center space-x-5">
                       <View className="w-16 h-16 bg-orange-400 rounded-full flex items-center justify-center">
-                        <Text className="text-xl">{data.nama_ibu[0]}</Text>
+                        <Text className="text-xl">{data.name[0]}</Text>
                       </View>
-                      <Text className="text-2xl">{data.nama_ibu}</Text>
+                      <Text className="text-2xl">{data.name}</Text>
                     </TouchableOpacity>
                   </LinearGradient>
                 </View>
               ))}
-            </View> */}
+            </View>
           </ScrollView>
         </>
       ) : (

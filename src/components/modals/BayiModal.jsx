@@ -9,8 +9,10 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {useEffect} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useGetibuhamil} from '../../features/ibuhamilintence';
 
 const BayiModal = ({by, setBy}) => {
+  const {data: kunjungan} = useGetibuhamil();
   const navigation = useNavigation();
 
   return (
@@ -48,7 +50,7 @@ const BayiModal = ({by, setBy}) => {
                           className="w-full rounded-lg">
                           <View className="flex-row space-x-3">
                             <Text className="text-2xl text-gray-800">
-                              {kunjung.nama_ibu}
+                              {kunjung.name}
                             </Text>
                           </View>
                         </TouchableOpacity>

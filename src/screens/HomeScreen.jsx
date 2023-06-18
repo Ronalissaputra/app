@@ -10,13 +10,13 @@ import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon3 from 'react-native-vector-icons/Entypo';
-
-// components imported
 import {ArtikelComp, HeaderComp, TitleComp} from '../components/utils';
+import {useGetibuhamil} from '../features/ibuhamilintence';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-
+  const {data} = useGetibuhamil();
+  console.log(data);
   return (
     <SafeAreaView className="mx-2">
       <ScrollView>
@@ -34,9 +34,7 @@ const HomeScreen = () => {
                   <Icon2 name="mother-heart" size={50} color="white" />
                 </View>
                 <View className="flex">
-                  <Text className="text-2xl text-slate-50 border-b-2 border-white">
-                    Ibu hamil
-                  </Text>
+                  <Text className="text-2xl text-slate-50">bumilku</Text>
                 </View>
               </View>
             </TouchableOpacity>
@@ -52,9 +50,7 @@ const HomeScreen = () => {
                   <Icon2 name="mother-nurse" size={50} color="white" />
                 </View>
                 <View className="flex">
-                  <Text className="text-2xl text-slate-50 border-b-2 border-white">
-                    Anak
-                  </Text>
+                  <Text className="text-2xl text-slate-50">Anak</Text>
                 </View>
               </View>
             </TouchableOpacity>
@@ -73,9 +69,7 @@ const HomeScreen = () => {
                   <Icon3 name="heart" size={50} color="white" />
                 </View>
                 <View className="flex">
-                  <Text className="text-2xl text-slate-50 border-b-2 border-white">
-                    Ibu nifas
-                  </Text>
+                  <Text className="text-2xl text-slate-50">Ibu nifas</Text>
                 </View>
               </View>
             </TouchableOpacity>
@@ -92,9 +86,7 @@ const HomeScreen = () => {
                   <Icon3 name="heart" size={50} color="white" />
                 </View>
                 <View className="flex">
-                  <Text className="text-2xl text-slate-50 border-b-2 border-white">
-                    Beresiko
-                  </Text>
+                  <Text className="text-2xl text-slate-50">Beresiko</Text>
                 </View>
               </View>
             </TouchableOpacity>

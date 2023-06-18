@@ -7,17 +7,17 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import {useEffect, useState} from 'react';
-import {axiosIsntance} from '../../lib/baseUrl';
+import {useState} from 'react';
 import {Formik} from 'formik';
 import {Dropdown} from 'react-native-element-dropdown';
 import LinearGradient from 'react-native-linear-gradient';
 import {LabelComp} from '../utils';
 import {useNavigation} from '@react-navigation/native';
+import {useCreateanak} from '../../features/anakintence';
 
 const BayilahirForm = () => {
   const navigation = useNavigation();
-  const {mutate, isSuccess} = useCreatebayi();
+  // const {mutate, isSuccess} = useCreateanak();
   const [users, setUsers] = useState([]);
   const [isFocus, setIsFocus] = useState(false);
   const [value, setValue] = useState();

@@ -14,8 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {LabelComp} from '../utils';
 
 const KehamilanForm = ({route}) => {
-  const {setKm, nama_ibu, id} = route.params;
-  console.log(id);
+  const {setKm, name, id} = route.params;
   const [value, setValue] = useState();
   const [isFocus, setIsFocus] = useState(false);
 
@@ -84,7 +83,7 @@ const KehamilanForm = ({route}) => {
   return (
     <SafeAreaView className="h-auto ">
       <ScrollView stickyHeaderIndices={[0]}>
-        <LabelComp>{nama_ibu.toUpperCase()}</LabelComp>
+        <LabelComp>{name.toUpperCase()}</LabelComp>
         <View className="mx-2">
           <Formik initialValues={initialValues} onSubmit={onSubmit}>
             {({handleChange, handleBlur, handleSubmit, values}) => (

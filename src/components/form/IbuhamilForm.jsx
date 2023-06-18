@@ -6,7 +6,6 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import {useState} from 'react';
 import {Formik} from 'formik';
 import LinearGradient from 'react-native-linear-gradient';
 import {LabelComp, SpinloadComp} from '../utils';
@@ -15,7 +14,7 @@ import {useCreateibuhamil} from '../../features/ibuhamilintence';
 
 const IbuhamilForm = () => {
   const navigation = useNavigation();
-  const {mutate, isLoading} = useCreateibuhamil();
+  const {mutate, isLoading, isSuccess} = useCreateibuhamil();
 
   const initialValues = {
     name: '',
@@ -45,13 +44,13 @@ const IbuhamilForm = () => {
 
   const onSubmit = async (values, {resetForm}) => {
     await mutate(values);
-    // resetForm({values: initialValues});
+    resetForm({values: initialValues});
     console.log(values);
   };
 
   return (
     <SafeAreaView className="h-auto">
-      {/* {isSuccess && navigation.navigate('IbuhamilMenu')} */}
+      {isSuccess && navigation.navigate('IbuhamilMenu')}
       {isLoading && <SpinloadComp />}
       <ScrollView stickyHeaderIndices={[0]}>
         <LabelComp>TAMBAH IBU HAMIL</LabelComp>
@@ -65,7 +64,7 @@ const IbuhamilForm = () => {
                     onChangeText={handleChange('name')}
                     onBlur={handleBlur('name')}
                     value={values.name}
-                    placeholder="name"
+                    placeholder="nama"
                     className="w-full rounded-sm p-2 py-3 px-4 bg-slate-300 text-slate-800 text-2xl"
                   />
                 </View>
